@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ ! -f catch-main.o ]; then
+    g++ -std=c++11 -c catch-main.cpp
+fi
+
+g++ -std=c++11 catch-main.o twitter.cpp unittest.cpp -o unittest
+if [ $? -eq 0 ]; then
+  echo running test in
+  pwd
+  ./unittest $@
+fi
